@@ -2,6 +2,13 @@ POST http://localhost:8080/expenses
 Content-Type:application/json
 
 {
-  "title": "coffee",
-  "amount": 5
+  "title": "burger",
+  "amount": 9.99,
+  "category": "food"
 }
+
+### delete expense
+DELETE http://localhost:8080/expenses/4
+
+### get total
+GET http://localhost:8080/expenses/total

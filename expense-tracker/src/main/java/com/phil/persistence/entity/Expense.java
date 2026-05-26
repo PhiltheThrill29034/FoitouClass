@@ -12,6 +12,7 @@ public class Expense {
     private Long id;
     private String title;
     private double amount;
+    private String category;
 
     public Expense(){};
 
@@ -29,4 +30,8 @@ public class Expense {
     public void setTitle(String title){this.title=title;}
 
     public void setAmount(double amount){this.amount=amount;}
+
+    public void setCategory(String category){this.category = category;}
+
+    public String getCategory(){return this.category;}
 }

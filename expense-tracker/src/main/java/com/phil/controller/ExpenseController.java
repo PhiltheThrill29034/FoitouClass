@@ -1,10 +1,7 @@
 package com.phil.controller;
 
 import com.phil.service.ExpenseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.phil.persistence.entity.Expense;
 
 import java.util.List;
@@ -18,6 +15,12 @@ public class ExpenseController {
         this.service = service;
     }
 
+//    💡 Rule of thumb
+//
+//    Create an endpoint when:
+//
+//    the frontend/user needs some action or data from backend
+    //endpoint: a combinatin of HTTP method + a path
     @GetMapping("/expenses")
     public List<Expense> showExpenses() {
         return service.getAllExpenses();
@@ -30,9 +33,21 @@ public class ExpenseController {
         sb.append("Expense added:\n");
         sb.append("Title: ").append(expense.getTitle()).append("\n");
         sb.append("Amount: ").append(expense.getAmount()).append("\n");
+        sb.append("Category: ").append(expense.getCategory()).append("\n");
         System.out.println(sb.toString());
         return service.addExpense(expense);
     }
+
+    @GetMapping("/expenses/total")
+    public double getSum(){
+            return service.getTotal();
+    }
+
+    @DeleteMapping("expenses/{id}")
+    public void deleteExpense(@PathVariable Long id){
+        service.deleteExpense(id);
+    }
+
 
 
 
